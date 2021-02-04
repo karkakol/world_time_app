@@ -6,13 +6,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   Map data = {};
 
   Color font_color = Colors.grey[300];
 
   @override
   Widget build(BuildContext context) {
-    data = ModalRoute.of(context)
+    data = data.isNotEmpty ? data : ModalRoute.of(context)
         .settings
         .arguments; // gets the arguments which i pass in loading widget
 
@@ -37,11 +38,19 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.fromLTRB(0, 120.0, 0, 0),
             child: Column(children: [
               FlatButton.icon(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/location');
+                onPressed: () async {
+                  dynamic result  = await Navigator.pushNamed(context, '/location');
+                  setState((){
+                    data  = {
+                      'location': result['location'],
+                      'flag': result['flag'],
+                      'time': result['time'],
+                      'isDayTime': result['isDayTime'],
+                    };
+                  });
                 },
                 icon: Icon(
-                    Icons.edit_location,
+                  Icons.edit_location,
                   color: Colors.grey[300],
                 ),
                 label: Text('editLocation',
