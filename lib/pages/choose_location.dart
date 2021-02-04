@@ -7,18 +7,34 @@ class ChooseLocation extends StatefulWidget {
 
 class _ChooseLocationState extends State<ChooseLocation> {
 
-  int counter = 0;
+  void getData() async {//says that function is asynchronous
+
+    //simulate network request foa a user name
+
+    String username = await Future.delayed(Duration(seconds: 3), () {//calls delyed methos od Future object whitch takes Duration object with seconds as paramiter, await means that this code must executed and only later we do rest of code
+      return('yoshi');
+    });
+
+
+    String bio = await Future.delayed(Duration(seconds: 2), () {
+      return ('vege, pede, mene');
+    });
+
+
+    print('$username - $bio');
+
+  }
+
 
   @override
   void initState() {
     super.initState();
-
-    print('initState function ran');
+    getData();
+    print('hello faggots');
   }
 
   @override
   Widget build(BuildContext context) {
-    print('build function ran');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
@@ -27,14 +43,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
         elevation: 0,
       ),
       backgroundColor: Colors.grey[200],
-      body: RaisedButton(
-        onPressed: (){
-          setState(() {
-            counter +=1;
-          });
-        },
-        child: Text('counter is: $counter'),
-      ),
+
     );
   }
 }
