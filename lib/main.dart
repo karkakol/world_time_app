@@ -12,5 +12,4 @@ void main() {
         '/location': (context) => ChooseLocation(),
   }));
   Map user = {'name': 'kamil', 'age': 45};
-  print(user['name']);
 }
