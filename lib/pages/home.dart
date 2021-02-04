@@ -6,27 +6,33 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   Map data = {};
+
+  Color font_color = Colors.black;
 
   @override
   Widget build(BuildContext context) {
-
-    data = ModalRoute.of(context).settings.arguments; // gets the arguments which i pass in loading widget
+    data = ModalRoute.of(context)
+        .settings
+        .arguments; // gets the arguments which i pass in loading widget
 
     print(data);
 
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(0,120.0,0,0),
+          padding: const EdgeInsets.fromLTRB(0, 120.0, 0, 0),
           child: Column(children: [
             FlatButton.icon(
               onPressed: () {
                 Navigator.pushNamed(context, '/location');
               },
               icon: Icon(Icons.edit_location),
-              label: Text('editLocation'),
+              label: Text('editLocation',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: font_color,
+                  )),
             ),
             SizedBox(height: 20.0),
             Row(
@@ -37,17 +43,17 @@ class _HomeState extends State<Home> {
                   style: TextStyle(
                     fontSize: 28.0,
                     letterSpacing: 2.0,
+                    color: font_color,
                   ),
                 )
               ],
             ),
             SizedBox(height: 20.0),
-            Text(
-              data['time'],
-              style: TextStyle(
-                fontSize: 66.0,
-              )
-            )
+            Text(data['time'],
+                style: TextStyle(
+                  fontSize: 66.0,
+                  color: font_color,
+                ))
           ]),
         ),
       ),
