@@ -4,12 +4,9 @@ import 'package:world_time_app/pages/choose_location.dart';
 import 'package:world_time_app/pages/loading.dart';
 
 void main() {
-  runApp(MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/': (context) => Loading(),
-        '/home': (context) => Home(),
-        '/location': (context) => ChooseLocation(),
+  runApp(MaterialApp(initialRoute: '/', routes: {
+    '/': (context) => Loading(),
+    '/home': (context) => Home(),
+    '/location': (context) => ChooseLocation(),
   }));
-  Map user = {'name': 'kamil', 'age': 45};
 }
